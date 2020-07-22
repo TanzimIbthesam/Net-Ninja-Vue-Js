@@ -29,6 +29,14 @@ getters:{
                       return discountFruits;
             }
 
+},
+mutations:{
+    reducePrice:state =>{
+      state.fruits.forEach(fruit => {
+          return fruit.price -=10;
+            
+        });
+    }
 }
 });
     

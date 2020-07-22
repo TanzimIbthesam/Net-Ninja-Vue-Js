@@ -22,6 +22,7 @@
          </div>
          <div class="w-3/5 mx-auto">
           <button @click="toggleButton=!toggleButton" class="py-1 px-6 bg-blue-800 text-white font-serif m-4 rounded-full">Open Modal</button>
+            <button @click="reducePrice" class="py-1 px-6 bg-blue-800 text-white font-serif m-4 rounded-full">Reduce Price</button>
           <div class="cursor-pointer z-50" v-if="toggleButton">
           <div class="bg-gray-900 w-64 px-6 border rounded-lg py-16 ml-64 -mt-32">
              <h1 class=" text-white ">Please enter login details</h1>
@@ -61,7 +62,14 @@ export default {
  }
     
     
-}
+},
+methods: {
+  reducePrice(){
+    this.$store.commit('reducePrice');
+  }
+  
+},
+
 }
 
 </script>
