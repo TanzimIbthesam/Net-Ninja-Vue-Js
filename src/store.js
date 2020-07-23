@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { setTimeout } from 'core-js';
 
 Vue.use(Vuex);
 
@@ -21,7 +22,7 @@ getters:{
        .map(fruit => {
                    return {
                        name: fruit.name,
-                       price: fruit.price * 1 / 4,
+                       price: fruit.price /2,
                        CountryofOrigin: fruit.CountryofOrigin
                    }
 
@@ -31,11 +32,25 @@ getters:{
 
 },
 mutations:{
-    reducePrice:state =>{
-      state.fruits.forEach(fruit => {
-          return fruit.price -=10;
-            
-        });
+    reducePrice:(state,payload) =>{
+        setTimeout(()=>{
+            state.fruits.forEach(fruit => {
+                // return fruit.price -= 10;
+                return fruit.price -= payload;
+
+            });
+
+        },3000);
+      
+    }
+},
+actions:{
+    reducePrice:(context,payload)=>{
+        setTimeout(()=>{
+            context.commit('reducePrice',payload);
+
+        },2000)
+
     }
 }
 });
