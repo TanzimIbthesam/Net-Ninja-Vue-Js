@@ -40,6 +40,8 @@
     </div>
 </template>
 <script>
+// import {mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
 export default {
    
  data() {
@@ -47,18 +49,13 @@ export default {
      return {
        
        toggleButton:false,
-     
-           
-     
      }
  },
  computed: {
-//      fruits(){
-//  return this.$store.state.fruits;
-//      },
-     discountFruits(){
-     return this.$store.getters.discountFruits;
- }
+
+   ...mapGetters([
+        'discountFruits'
+    ])
     
     
 }

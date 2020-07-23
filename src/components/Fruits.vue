@@ -41,7 +41,9 @@
     </div>
 </template>
 <script>
-export default {
+import {mapActions} from 'vuex'
+import {mapGetters} from 'vuex'
+ export default {
    
  data() {
    
@@ -54,20 +56,17 @@ export default {
      }
  },
  computed: {
-//      fruits(){
-//  return this.$store.state.fruits;
-//      },
-     discountFruits(){
-     return this.$store.getters.discountFruits;
- }
-    
+
+    ...mapGetters([
+        'discountFruits'
+    ])
     
 },
 methods: {
-  reducePrice(amount){
-    // this.$store.commit('reducePrice');
-    this.$store.dispatch('reducePrice',amount);
-  }
+
+  ...mapActions([
+        'reducePrice'
+    ])
   
 },
 
